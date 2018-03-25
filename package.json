@@ -5,15 +5,19 @@
   "private": true,
   "scripts": {
     "start": "concurrently -k -s first \"npm run start:server\" \"npm run start:electron\"",
-    "start:server": "cross-env NODE_ENV=development neutrino start",
-    "start:electron": "wait-on http://localhost:3000/ && electron -r babel-register ./src/main",
-    "build": "cross-env NODE_ENV=production neutrino build"
+    "start:electron": "wait-on http://localhost:3000/ && electron ./dist",
+    "start:server": "neutrino start",
+    "build": "neutrino build"
   },
   "dependencies": {
+    "electron-window-manager": "^1.0.6",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "@neutrinojs/env": "^8.2.0",
+    "@neutrinojs/fork": "^8.2.0",
+    "@neutrinojs/library": "^8.2.0",
     "@neutrinojs/react": "^8.2.0",
     "babel-preset-electron": "^1.4.15",
     "concurrently": "^3.5.1",

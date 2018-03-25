@@ -1,6 +1,11 @@
-require('babel-register')({
-  babelrc: false,
-  presets: [ 'electron' ]
+import { app } from 'electron';
+import { createMainWindow } from './windows';
+
+app.on('window-all-closed', () => {
+	if (process.platform !== 'darwin') {
+		app.quit();
+	}
 });
 
-require('./init');
+app.on('activate', () => createMainWindow());
+app.on('ready', () => createMainWindow());

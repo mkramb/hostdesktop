@@ -1,12 +1,10 @@
 module.exports = {
-  options: {
-    source: 'src/renderer',
-    output: 'dist',
-  },
   use: [
-    ['@neutrinojs/react', {
-      html: { title: 'HostDesktop' },
-      devServer: { port: 3000 }
+    ['@neutrinojs/fork', {
+      configs: {
+        main: { use: ['config/build-main.js'] },
+        renderer: { use: ['config/build-renderer.js'] }
+      }
     }]
   ]
 };
