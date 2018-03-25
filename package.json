@@ -1,0 +1,20 @@
+{
+  "name": "hostdesktop",
+  "version": "1.0.0",
+  "author": "Mitja Kramberger",
+  "private": true,
+  "scripts": {
+    "start": "neutrino start",
+    "start:main": "npx electron ./main",
+    "build": "neutrino build"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "@neutrinojs/react": "^8.2.0",
+    "electron": "^1.8.4",
+    "neutrino": "^8.2.0"
+  }
+}
