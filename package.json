@@ -4,9 +4,10 @@
   "author": "Mitja Kramberger",
   "private": true,
   "scripts": {
-    "start": "neutrino start",
-    "start:main": "npx electron ./main",
-    "build": "neutrino build"
+    "start": "concurrently -k -s first \"npm run start:server\" \"npm run start:electron\"",
+    "start:server": "cross-env NODE_ENV=development neutrino start",
+    "start:electron": "wait-on http://localhost:3000/ && electron -r babel-register ./src/main",
+    "build": "cross-env NODE_ENV=production neutrino build"
   },
   "dependencies": {
     "react": "^16.2.0",
@@ -14,7 +15,11 @@
   },
   "devDependencies": {
     "@neutrinojs/react": "^8.2.0",
+    "babel-preset-electron": "^1.4.15",
+    "concurrently": "^3.5.1",
+    "cross-env": "^5.1.4",
     "electron": "^1.8.4",
-    "neutrino": "^8.2.0"
+    "neutrino": "^8.2.0",
+    "wait-on": "^2.1.0"
   }
 }

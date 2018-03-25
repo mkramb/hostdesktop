@@ -1,5 +1,6 @@
 module.exports = {
   options: {
+    source: 'src/renderer',
     output: 'dist',
   },
   use: [

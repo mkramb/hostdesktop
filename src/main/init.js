@@ -1,5 +1,4 @@
-const electron = require('electron');
-const app = electron.app;
+import { app, BrowserWindow } from 'electron';
 
 let mainWindow;
 
@@ -8,9 +7,9 @@ function onClosed() {
 }
 
 function createMainWindow() {
-	const win = new electron.BrowserWindow({
-		width: 600,
-		height: 400
+	const win = new BrowserWindow({
+		width: 620,
+		height: 100
 	});
 
 	win.loadURL('http://localhost:3000');
