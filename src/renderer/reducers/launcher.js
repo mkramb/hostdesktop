@@ -1,13 +1,9 @@
-import { createActions, handleActions } from 'redux-actions';
+import { handleActions } from 'redux-actions';
+import { searchAppsUpdate } from '../middlewares/search';
 
 const defaultState = {
   apps: []
 };
-
-const { searchAppsStart, searchAppsUpdate } = createActions({
-  SEARCH_APPS_START: (term) => ({ term }),
-  SEARCH_APPS_UPDATE: (apps) => ({ apps })
-});
 
 const reducer = handleActions({
   [searchAppsUpdate]: (state, { payload: { apps } }) => {

@@ -5,18 +5,18 @@ import styled from 'styled-components';
 import SearchBar from 'material-ui-search-bar';
 import { grey100 } from 'material-ui/styles/colors';
 import { Applications } from '../applications';
-import { searchAppsStart } from '../../reducers/launcher';
+import { searchAppsStart } from '../../middlewares/search';
 
 const Container = styled.div`
   background-color: ${grey100};
   height: 100vh;
 `;
 
-const Launcher = ({ apps, searchForApps }) => (
+const Launcher = ({ apps, search }) => (
   <Container>
     <SearchBar
       hintText='Search for application'
-      onChange={(term) => searchForApps(term)}
+      onChange={(term) => search(term)}
       onRequestSearch={() => identity(undefined)}
     />
     { apps && <Applications items={apps} /> }
@@ -25,7 +25,7 @@ const Launcher = ({ apps, searchForApps }) => (
 
 const mapStateToProps = state => ({ apps: state.launcher.apps });
 const mapDispatchToProps = dispatch => ({
-  searchForApps: (term) => dispatch(searchAppsStart(term))
+  search: (term) => dispatch(searchAppsStart(term))
 })
 
 const LauncherConnected = connect(
