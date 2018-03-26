@@ -2,7 +2,7 @@
 import { Observable } from 'rxjs/Observable';
 import { createActions } from 'redux-actions';
 import startsWith from 'lodash.startswith';
-import { updateLauncher } from '../services';
+import { updateLauncherWindow } from '../services';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 
@@ -16,7 +16,7 @@ const searchBySearchTerm = ({ payload: { term } }, apps) => {
     ({ title }) => term && startsWith(title, term)
   ) || [];
 
-  updateLauncher({
+  updateLauncherWindow({
     expanded: (filtered.length > 0)
   });
 

@@ -2,7 +2,7 @@ import { ipcMain } from 'electron';
 import windowManager from 'electron-window-manager';
 import { templates } from '../windows'; 
 
-ipcMain.on('LAUNCHER_UPDATE', (event, options) => {
+ipcMain.on('LAUNCHER_UPDATE_WINDOW', (event, options) => {
   const laucherWindow = windowManager
     .get('launcher').object;
 
