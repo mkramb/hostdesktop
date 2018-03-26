@@ -1,5 +1,4 @@
 import React from 'react';
-import { identity } from 'ramda';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import SearchBar from 'material-ui-search-bar';
@@ -17,7 +16,7 @@ const Launcher = ({ apps, search }) => (
     <SearchBar
       hintText='Search for application'
       onChange={(term) => search(term)}
-      onRequestSearch={() => identity(undefined)}
+      onRequestSearch={() => undefined}
     />
     { apps && <Applications items={apps} /> }
   </Container>
