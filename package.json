@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "electron-window-manager": "^1.0.6",
+    "lodash.startswith": "^4.2.1",
     "material-ui": "^0.20.0",
     "material-ui-search-bar": "^0.4.1",
     "ramda": "^0.25.0",
