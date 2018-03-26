@@ -1,18 +1,33 @@
 import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import { Launcher } from './launcher';
+import { Provider } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { LauncherConnected } from './components';
+import { store } from './store';
+import './styles/global';
 
-const load = () => render((
-  <AppContainer>
-    <Launcher />
-  </AppContainer>
-), document.getElementById('root'));
+const getAppComponent = () => (
+  <MuiThemeProvider>
+    <Provider store={store}>
+      <LauncherConnected />
+    </Provider>
+  </MuiThemeProvider>
+);
+
+render(
+  getAppComponent(),
+  document.getElementById('root')
+);
 
 if (module.hot) {
-  module.hot.accept(
-    './launcher',
-    load
-  );
-}
+  module.hot.accept('./components', () => {
+    render(
+      getAppComponent(),
+      document.getElementById('root')
+    );
+  });
 
-load();
+  module.hot.accept('./reducers', () => {
+    const hotReducer = require('./reducers').default;
+    store.replaceReducer(combineReducers(hotReducer));
+  });
+}
