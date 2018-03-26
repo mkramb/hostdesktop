@@ -1,5 +1,5 @@
 {
-  "name": "hostdesktop",
+  "name": "workassemble",
   "version": "1.0.0",
   "author": "Mitja Kramberger",
   "private": true,
@@ -33,6 +33,7 @@
     "babel-preset-electron": "^1.4.15",
     "concurrently": "^3.5.1",
     "cross-env": "^5.1.4",
+    "devtron": "^1.4.0",
     "electron": "^1.8.4",
     "neutrino": "^8.2.0",
     "wait-on": "^2.1.0"

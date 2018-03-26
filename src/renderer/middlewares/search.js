@@ -1,8 +1,10 @@
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
+
 import { Observable } from 'rxjs/Observable';
 import { createActions } from 'redux-actions';
 import startsWith from 'lodash.startswith';
+import { updateLauncher } from '../services';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
 
 const { searchAppsStart, searchAppsUpdate } = createActions({
   SEARCH_APPS_START: (term) => ({ term }),
@@ -10,13 +12,15 @@ const { searchAppsStart, searchAppsUpdate } = createActions({
 });
 
 const searchBySearchTerm = ({ payload: { term } }, apps) => {
-  if (term && term.length) {
-    return apps.filter(
-      ({ title }) => startsWith(title, term)
-    );
-  }
+  const filtered = apps.filter(
+    ({ title }) => term && startsWith(title, term)
+  ) || [];
 
-  return [];
+  updateLauncher({
+    expanded: (filtered.length > 0)
+  });
+
+  return filtered;
 };
 
 const searchEpic = (action$, store) => {
