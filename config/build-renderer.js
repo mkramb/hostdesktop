@@ -11,7 +11,7 @@ module.exports = (neutrino) => {
     .end();
 
   neutrino.use(react, {
-    html: { title: 'WorkAssemble' },
+    html: { title: 'Worksemble' },
     devServer: { port: 3000 }
   });
 };
